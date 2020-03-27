@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useHistory} from 'react-router-dom';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
@@ -12,6 +13,8 @@ const Login = (props) => {
       password: ''
     }
   })
+
+  const {history} =useHistory();
 
   const handleChange = e => {
     setCred({
@@ -27,11 +30,11 @@ const Login = (props) => {
     e.preventDefault();
     console.log("what I'm passing",cred.credentials)
     axiosWithAuth()
-    .post('/api/login', cred.credentails)
+    .post('/api/login', cred.credentials)
     .then(res => {
       console.log("Login Response", res)
-      (localStorage.setItem('token', JSON.stringify(res.data.payload)))
-      props.history.push('/colors')
+      (localStorage.setItem('token', res.data.payload))
+      history.push('/colors')
     })
     .catch(err => {
       console.log("Login Error", err.response)
