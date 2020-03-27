@@ -8,8 +8,8 @@ const initialColor = {
   id: ""
 };
 
-const ColorList = ({ colors, updateColors, props }) => {
-  console.log("inital colors and props",colors, props);
+const ColorList = ({ colors, updateColors }) => {
+  console.log("inital colors", colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -30,7 +30,8 @@ const ColorList = ({ colors, updateColors, props }) => {
         .then(rez =>{
           console.log("PUT req", rez)
           const updatedColors = colors.map(color => {
-            if(`${color.id}`=== id){
+            console.log("Look Here!", color.id, id)
+            if(color.id=== id){
               return colorToEdit
             } else{
               return color
@@ -38,6 +39,7 @@ const ColorList = ({ colors, updateColors, props }) => {
           })
           console.log("New Array", updatedColors)
           updateColors(updatedColors)
+          console.log("after update",colors)
           push('/colors')
         })
         .catch(errz =>{
@@ -52,14 +54,14 @@ const ColorList = ({ colors, updateColors, props }) => {
 
   const deleteColor = color => {
     // make a delete request to delete this color
-    const deleteId = `${color.id}`
+    const deleteId = color.id
     axiosWithAuth()
       // console.log("What is color in the delete?", deleteId)
       .delete(`/api/colors/${deleteId}`)
       .then(resp => {
         console.log("resp from delete", resp)
         const listMinus = colors.filter(shade => {
-          if (`${color.id}` === id){
+          if (color.id === id){
 
           }else{
             return shade
