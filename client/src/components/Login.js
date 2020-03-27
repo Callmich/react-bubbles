@@ -23,14 +23,15 @@ const Login = (props) => {
     console.log(cred)
   }
 
-  const submitLogin = e => {
+  const submitLogin = (e) => {
     e.preventDefault();
     console.log("what I'm passing",cred.credentials)
     axiosWithAuth()
     .post('/api/login', cred.credentails)
-    .then(async res => {
+    .then(res => {
       console.log("Login Response", res)
-      await (localStorage.setItem('token', JSON.stringify(res.data.payload)))
+      (localStorage.setItem('token', JSON.stringify(res.data.payload)))
+      props.history.push('/colors')
     })
     .catch(err => {
       console.log("Login Error", err.response)
