@@ -29,15 +29,16 @@ const Login = (props) => {
   const submitLogin = (e) => {
     e.preventDefault();
     console.log("what I'm passing",cred.credentials)
+    console.log("Props",props)
     axiosWithAuth()
     .post('/api/login', cred.credentials)
-    .then(res => {
-      console.log("Login Response", res)
-      (localStorage.setItem('token', res.data.payload))
-      history.push('/colors')
+    .then(async res => {
+      console.log("Login Response", res);
+      await (localStorage.setItem('token', res.data.payload));
+      props.history.push('/colors')
     })
     .catch(err => {
-      console.log("Login Error", err.response)
+      console.log("Login Error", err)
     })
   }
   //looking at the server I think I need to make this an async call.
