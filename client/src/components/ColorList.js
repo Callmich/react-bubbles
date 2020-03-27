@@ -8,8 +8,8 @@ const initialColor = {
   id: ""
 };
 
-const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
+const ColorList = ({ colors, updateColors, props }) => {
+  console.log("inital colors and props",colors, props);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
