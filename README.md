@@ -27,9 +27,19 @@ In this project you will create a login page and request a token from the server
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain what a token is used for.
+      A token is your “proof of purchase” for getting into a website - a hand stamp may be a better term. It shows that you should have access to the data within a website. It is passed from a server once credentials have been met (username & password match”) and can be kept in local storage for a computer. 
+
 - [ ] What steps can you take in your web apps to keep your data secure?
+      Private routes present a great way to make sure that data is secure. This relies on a person having a token in order to get to the specific routes they are trying to access. Without a hand stamp (token) they are not let into the bar.
+
 - [ ] Describe how web servers work.
+      A user inputs a URL into a computer - which is passed to modem, then to the local provider - that then reaches out to a system of servers to find the pathway to the website which is relayed back to the user. Web servers are both the physical comp that hold the data for the sites as well as the programs that run that software on the computers.
+
 - [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+      Create: Post
+	    Read: Get
+	    Update: Put
+	    Delete: Delete
 
 
 ## Project Set Up
